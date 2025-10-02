@@ -1,0 +1,5 @@
+export * from "./ChangeStatusCompanyUseCase"
+export * from "./CreateNewCompanyUseCase"
+export * from "./GetCompaniesUseCase"
+export * from "./GetCompanyUseCase"
+export * from "./UpdateCompanyUseCase"
