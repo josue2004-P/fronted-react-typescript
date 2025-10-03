@@ -1,30 +1,45 @@
-import { Outlet, Link } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
+import { Outlet } from "react-router-dom";
+import { useState } from "react";
+import Sidebar from "../components/Sidebar";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 export default function Layout() {
-  const { startLogout } = useAuth();
-
-  const handleLogout = () => {
-    startLogout();
-  };
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div>
-      <header style={{ padding: "1rem", background: "#eee" }}>
-        <h1>Mi App</h1>
-        <Link to={"login"}>Login</Link>
-        <button onClick={handleLogout}>Cerrar sesion</button>
-      </header>
+    <div className="flex">
+      {/* Sidebar con estado */}
+      <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
 
-      <main style={{ padding: "1rem" }}>
-        <Outlet />
-      </main>
+      {/* Contenedor principal */}
+      <div className="flex-1 flex flex-col min-h-screen bg-gray-100 md:ml-64 transition-all">
+        {/* Header */}
+        <header className="h-14 bg-white shadow flex items-center justify-between px-6">
+          <h1 className="text-lg font-semibold">Dashboard</h1>
 
-      <footer
-        style={{ padding: "1rem", background: "#eee", marginTop: "1rem" }}
-      >
-        © 2025 Mi App
-      </footer>
+          {/* Botón hamburguesa solo en móvil */}
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="md:hidden p-2 bg-gray-800 text-white rounded-lg"
+          >
+            {sidebarOpen ? (
+              <XMarkIcon className="h-6 w-6" />
+            ) : (
+              <Bars3Icon className="h-6 w-6" />
+            )}
+          </button>
+        </header>
+
+        {/* Contenido dinámico */}
+        <main className="flex-1 p-6">
+          <Outlet />
+        </main>
+
+        {/* Footer */}
+        <footer className="p-4 bg-gray-200 text-center text-sm text-gray-600">
+          © 2025 Mi App
+        </footer>
+      </div>
     </div>
   );
 }

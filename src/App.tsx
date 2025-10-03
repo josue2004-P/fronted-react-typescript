@@ -7,6 +7,7 @@ import { DashboardPage } from "./pages/Administrator";
 import Layout from "./components/Layout";
 import PrivateRoute from "./components/Routes/PrivateRoute";
 import PublicRoute from "./components/Routes/PublicRoute";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -47,6 +48,9 @@ function App() {
             </PublicRoute>
           }
         />
+
+        {/* Página 404 */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>
   );
