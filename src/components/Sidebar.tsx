@@ -30,7 +30,7 @@ export default function Sidebar({ open, setOpen }: SidebarProps) {
       >
         <div className="p-4 font-bold text-xl border-b">Mi App</div>
         <nav className="p-4 space-y-2">
-          <Link to="/" className="block p-2 rounded hover:bg-gray-200">
+          <Link to="/dashboard" className="block p-2 rounded hover:bg-gray-200">
             Inicio
           </Link>
           <Link to="/about" className="block p-2 rounded hover:bg-gray-200">
