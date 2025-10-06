@@ -4,6 +4,7 @@ import AuthLoader from "./components/Routes/AuthLoader";
 import { HomePage, AboutPage } from "./pages/Home";
 import { LoginPage, RegisterPage } from "./pages/Auth";
 import { DashboardPage } from "./pages/Administrator";
+import { HomeCompanyPage,CreateCompanyPage,UpdateCompanyPage } from "./pages/Company";
 import Layout from "./components/Layout";
 import PrivateRoute from "./components/Routes/PrivateRoute";
 import PublicRoute from "./components/Routes/PublicRoute";
@@ -26,6 +27,12 @@ function App() {
           }
         >
           <Route path="dashboard" element={<DashboardPage />} />
+
+          {/* COMPANY */}
+          <Route path="company" element={<HomeCompanyPage />} />
+          <Route path="company/create" element={<CreateCompanyPage />} />
+          <Route path="company/update/:id" element={<UpdateCompanyPage />} />
+
         </Route>
 
         {/* Rutas públicas */}

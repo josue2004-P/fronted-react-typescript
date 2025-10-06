@@ -1,5 +1,5 @@
-import { getCompaniesRequest } from "@/services/companyService";
-import { CompaniesResponse } from "@/types/company";
+import { getCompaniesRequest } from "../../services/companyService";
+import type{ CompaniesResponse } from "../../types/company";
 
 export class GetCompaniesUseCase {
   async execute(): Promise<CompaniesResponse> {

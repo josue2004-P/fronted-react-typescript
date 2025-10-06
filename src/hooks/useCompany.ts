@@ -1,28 +1,28 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback } from "react";
 
-import { RootState } from "@/store";
+import type { RootState } from "../store";
 import {
   onLoadCompanies,
   onLoadCompany,
   onSetError,
-} from "@/store/slices/companySlice";
+} from "../store/slices/companySlice";
 import {
   GetCompaniesUseCase,
   ChangeStatusCompanyUseCase,
   CreateNewCompanyUseCase,
   GetCompanyUseCase,
   UpdateCompanyUseCase,
-} from "@/application/company";
-import { CompanyCreateUpdate } from "@/types/company";
-import { useRouter } from "next/navigation";
+} from "../application/company";
+import type { CompanyCreateUpdate } from "../types/company";
 import { AxiosError } from "axios";
+import { useNavigate } from "react-router-dom";
 
 import Swal from "sweetalert2";
 
 export const useCompany = () => {
   const dispatch = useDispatch();
-  const router = useRouter();
+  const navigate = useNavigate();
 
   const { companies, company, isLoadingCompanies, filtros, error } =
     useSelector((state: RootState) => state.company);
@@ -36,7 +36,7 @@ export const useCompany = () => {
         title: "¡Hecho!",
         text: response.message,
       }).then(() => {
-        router.push("/dashboard/company");
+        navigate("/company");
       });
     } catch (err: unknown) {
       let errorMsg = "Error actualizando el status";
@@ -55,7 +55,7 @@ export const useCompany = () => {
     }
   };
 
-  const startLoadCompanies = async () => {
+  const startLoadCompanies = useCallback(async () => {
     try {
       const useCase = new GetCompaniesUseCase();
       const response = await useCase.execute(); // CompaniesResponse
@@ -77,7 +77,7 @@ export const useCompany = () => {
         text: errorMsg,
       });
     }
-  };
+  }, [dispatch]);
 
   const startLoadCompany = useCallback(
     async (id: string) => {

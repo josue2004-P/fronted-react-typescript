@@ -28,10 +28,13 @@ export default function Sidebar({ open, setOpen }: SidebarProps) {
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="p-4 font-bold text-xl border-b">Mi App</div>
+        <div className="p-4 font-bold text-xl border-b">Centro Medico</div>
         <nav className="p-4 space-y-2">
           <Link to="/dashboard" className="block p-2 rounded hover:bg-gray-200">
             Inicio
+          </Link>
+          <Link to="/company" className="block p-2 rounded hover:bg-gray-200">
+            Company
           </Link>
           <Link to="/about" className="block p-2 rounded hover:bg-gray-200">
             Acerca de

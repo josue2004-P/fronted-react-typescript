@@ -37,7 +37,7 @@ export default function Layout() {
 
         {/* Footer */}
         <footer className="p-4 bg-gray-200 text-center text-sm text-gray-600">
-          © 2025 Mi App
+          © 2025 Centro Medico
         </footer>
       </div>
     </div>

@@ -1,11 +1,11 @@
 // src/services/companyService.ts
-import { axiosClient } from "@/infrastructure/api/AxiosClient";
-import {
+import { axiosClient } from "../infrastructure/api/AxiosClient";
+import type {
   CompaniesResponse,
   ChangeStatusResponse,
   CompanyCreateUpdate,
   CompanyResponse,
-} from "@/types/company";
+} from "../types/company";
 
 export const getCompanyRequest = async (
   id: string

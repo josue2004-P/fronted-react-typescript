@@ -1,8 +1,8 @@
 import {
   changeStatusActivateCompany,
   changeStatusDeactivateCompany,
-} from "@/services/companyService";
-import { ChangeStatusResponse } from "@/types/company";
+} from "../../services/companyService";
+import type { ChangeStatusResponse } from "../../types/company";
 
 export class ChangeStatusCompanyUseCase {
   async execute(id: string, status: string): Promise<ChangeStatusResponse> {

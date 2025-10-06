@@ -1,5 +1,5 @@
-import { updateCompanyUseCase } from "@/services/companyService";
-import { CompanyCreateUpdate, CompaniesResponse } from "@/types/company";
+import { updateCompanyUseCase } from "../../services/companyService";
+import type  { CompanyCreateUpdate, CompaniesResponse } from "../../types/company";
 
 export class UpdateCompanyUseCase {
   async execute(
